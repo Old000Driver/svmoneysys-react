@@ -2,7 +2,7 @@ import React from 'react';
 import Nav from './components/Nav'
 import {
   HashRouter as
-    Router, Switch, Route, Redirect, Link
+    Router, Switch, Route, Redirect,
 } from 'react-router-dom';
 import styled from 'styled-components';
 
