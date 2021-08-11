@@ -26,7 +26,7 @@ const NavWrapper = styled.div`
         align-items: center;
         &.selected{
           color:#ff5000;
-          animation: FangDa 0.3s forwards;
+          animation: FangDa 0.35s forwards;
         }
       }
       @keyframes FangDa{
