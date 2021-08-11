@@ -54,6 +54,10 @@ button {
   display: inline-block;
 }
 
+:focus {
+  outline: none;
+}
+
 
 
 
