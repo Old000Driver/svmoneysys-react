@@ -26,8 +26,9 @@ const NavWrapper = styled.div`
         justify-content: center;
         align-items: center;
         &.selected{
-          color:#ff5000;
+          color: #f60;
           animation: FangDa 0.35s forwards;
+          fill: #f60;
         }
       }
       @keyframes FangDa{
