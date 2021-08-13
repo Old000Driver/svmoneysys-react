@@ -40,15 +40,15 @@ const Center = styled.div`
 `;
 
 function Tags() {
-  const {tags, setTags} = useTags();
+  const {tags} = useTags();
 
   return (
     <Layout>
       <TagList>
         {tags.map(tag =>
-          <li key={tag} className='oneLine'>
-            <Link to={'/tags/' + tag}>
-              <span className={'oneLine'}>{tag}</span>
+          <li key={tag.id} className='oneLine'>
+            <Link to={'/tags/' + tag.id}>
+              <span className={'oneLine'}>{tag.name}</span>
               <Icon name="right"/>
             </Link>
           </li>)}

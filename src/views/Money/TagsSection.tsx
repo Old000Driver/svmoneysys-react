@@ -39,47 +39,44 @@ const Wrapper = styled.section`
 `;
 
 type Props = {
-  value: string[],
-  onChange: (selected: string[]) => void
+  value: number[],
+  onChange: (selected: number[]) => void
 }
 
 const TagsSection: React.FunctionComponent<Props> = (props) => {
-  const {tags, setTags} = useTags();
-  const selectedTags = props.value;
-  const onAddTag = () => {
-    const tagName = window.prompt('新标签名为');
+    const {tags, setTagsIds} = useTags();
+    const selectedTagIds = props.value;
+    const onAddTag = () => {
+      const tagName = window.prompt('新标签名为');
 
-    if (tagName !== null) {
-      if (tags.indexOf(tagName) >= 0) {
-        alert('已存在此标签名');
-      } else {
-        setTags([...tags, tagName]);
+      if (tagName !== null) {
+        setTagsIds([...tags, {id: Math.random(), name: tagName}]);
       }
-    }
-  };
-  const onToggleTag = (tag: string) => {
-    const index = selectedTags.indexOf(tag);
-    if (index >= 0) {
-      props.onChange(selectedTags.filter(t => t !== tag));
-    } else {
-      props.onChange([...selectedTags, tag]);
-    }
-  };
-  const getClass = (tag: string) => selectedTags.indexOf(tag) >= 0 ? 'selected' : '';
+    };
+    const onToggleTag = (tagId: number) => {
+      const index = selectedTagIds.indexOf(tagId);
+      if (index >= 0) {
+        props.onChange(selectedTagIds.filter(t => t !== tagId));
+      } else {
+        props.onChange([...selectedTagIds, tagId]);
+      }
+    };
+    const getClass = (tagId: number) =>
+      selectedTagIds.indexOf(tagId) >= 0 ? 'selected' : '';
 
-
-  return (
-    <Wrapper>
-      <ol>
-        {tags.map(tag =>
-          <li key={tag} onClick={
-            () => {onToggleTag(tag);}
-          } className={getClass(tag)}>{tag}</li>
-        )}
-      </ol>
-      <button onClick={onAddTag}>新增标签</button>
-    </Wrapper>
-  );
-};
+    return (
+      <Wrapper>
+        <ol>
+          {tags.map(tag =>
+            <li key={tag.id} onClick={
+              () => {onToggleTag(tag.id);}
+            } className={getClass(tag.id)}>{tag.name}</li>
+          )}
+        </ol>
+        <button onClick={onAddTag}>新增标签</button>
+      </Wrapper>
+    );
+  }
+;
 
 export {TagsSection};
