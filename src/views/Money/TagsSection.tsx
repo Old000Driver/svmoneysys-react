@@ -45,13 +45,13 @@ type Props = {
 }
 
 const TagsSection: React.FunctionComponent<Props> = (props) => {
-    const {tags, setTagsIds} = useTags();
+    const {tags, setTags} = useTags();
     const selectedTagIds = props.value;
     const onAddTag = () => {
       const tagName = window.prompt('新标签名为');
 
       if (tagName !== null) {
-        setTagsIds([...tags, {id: createId(), name: tagName}]);
+        setTags([...tags, {id: createId(), name: tagName}]);
       }
     };
     const onToggleTag = (tagId: number) => {
